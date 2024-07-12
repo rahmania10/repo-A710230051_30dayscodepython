@@ -16,90 +16,62 @@ class Ui_form(object):
         Form.setObjectName("Form")
         Form.resize(400, 300)
         self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(40, 50, 47, 14))
+        self.label.setGeometry(QtCore.QRect(40, 20, 100, 30))
         self.label.setObjectName("label")
         self.widget = QtWidgets.QWidget(Form)
-        self.widget.setGeometry(QtCore.QRect(40, 70, 320, 137))
+        self.widget.setGeometry(QtCore.QRect(40, 50, 320, 200))
         self.widget.setObjectName("widget")
         self.gridLayout = QtWidgets.QGridLayout(self.widget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0) 
-        self.gridLayout.setObjectName("gridLayout") 
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setObjectName("gridLayout")
         self.lineEdit = QtWidgets.QLineEdit(self.widget)
         self.lineEdit.setObjectName("lineEdit")
         self.gridLayout.addWidget(self.lineEdit, 0, 0, 1, 4)
-        self.pushButton = QtWidgets.QPushButton(self.widget)
-        self.pushButton.setObjectName("pushButton")
-        self.gridLayout.addWidget(self.pushButton, 1, 0, 1, 1)
-        self.pushButton_2 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.gridLayout.addWidget(self.pushButton_2, 1, 1, 1, 1)
-        self.pushButton_3 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.gridLayout.addWidget(self.pushButton_3, 1, 2, 1, 1)
-        self.pushButton_4 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.gridLayout.addWidget(self.pushButton_4, 1, 3, 1, 1)
-        self.pushButton_5 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.gridLayout.addWidget(self.pushButton_5, 2, 0, 1, 1)
-        self.pushButton_6 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.gridLayout.addWidget(self.pushButton_6, 2, 1, 1, 1)
-        self.pushButton_7 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_7.setObjectName("pushButton_7")
-        self.gridLayout.addWidget(self.pushButton_7, 2, 2, 1, 1)
-        self.pushButton_8 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_8.setObjectName("pushButton_8")
-        self.gridLayout.addWidget(self.pushButton_8, 2, 3, 1, 1)
-        self.pushButton_9 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_9.setObjectName("pushButton_9")
-        self.gridLayout.addWidget(self.pushButton_9, 3, 0, 1, 1)
-        self.pushButton_10 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_10.setObjectName("pushButton_10")
-        self.gridLayout.addWidget(self.pushButton_10, 3, 1, 1, 1)
-        self.pushButton_11 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_11.setObjectName("pushButton_11")
-        self.gridLayout.addWidget(self.pushButton_11, 3, 2, 1, 1)
-        self.pushButton_12 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_12.setObjectName("pushButton_12")
-        self.gridLayout.addWidget(self.pushButton_12, 3, 3, 1, 1)
-        self.pushButton_13 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_13.setObjectName("pushButton_13")
-        self.gridLayout.addWidget(self.pushButton_13, 4, 0, 1, 1)
-        self.pushButton_14 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_14.setObjectName("pushButton_14")
-        self.gridLayout.addWidget(self.pushButton_14, 4, 1, 1, 1)
-        self.pushButton_15 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_15.setObjectName("pushButton_15")
-        self.gridLayout.addWidget(self.pushButton_15, 4, 2, 1, 1)
-        self.pushButton_16 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_16.setObjectName("pushButton_16")
-        self.gridLayout.addWidget(self.pushButton_16, 4, 3, 1, 1)
+        
+        buttons = [
+            ('7', 1, 0), ('8', 1, 1), ('9', 1, 2), ('/', 1, 3),
+            ('4', 2, 0), ('5', 2, 1), ('6', 2, 2), ('*', 2, 3),
+            ('1', 3, 0), ('2', 3, 1), ('3', 3, 2), ('-', 3, 3),
+            ('0', 4, 0), ('.', 4, 1), ('=', 4, 2), ('+', 4, 3),
+        ]
 
+        self.buttons = {}
+        for text, row, col in buttons:
+            button = QtWidgets.QPushButton(text)
+            button.setObjectName(f"pushButton_{text}")
+            self.gridLayout.addWidget(button, row, col, 1, 1)
+            self.buttons[text] = button
+        
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
+        self.add_functions()
+
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.label.setText(_translate("Form", "calculator"))
+        Form.setWindowTitle(_translate("Form", "Calculator"))
+        self.label.setText(_translate("Form", "Calculator"))
         self.lineEdit.setText(_translate("Form", "0"))
-        self.pushButton.setText(_translate("Form", "7"))
-        self.pushButton_2.setText(_translate("Form", "8"))
-        self.pushButton_3.setText(_translate("Form", "9"))
-        self.pushButton_4.setText(_translate("Form", "/"))
-        self.pushButton_5.setText(_translate("Form", "4"))
-        self.pushButton_6.setText(_translate("Form", "5"))
-        self.pushButton_7.setText(_translate("Form", "6"))
-        self.pushButton_8.setText(_translate("Form", "*"))
-        self.pushButton_9.setText(_translate("Form", "1"))
-        self.pushButton_10.setText(_translate("Form", "2"))
-        self.pushButton_11.setText(_translate("Form", "3"))
-        self.pushButton_12.setText(_translate("Form", "-"))
-        self.pushButton_13.setText(_translate("Form", "0"))
-        self.pushButton_14.setText(_translate("Form", "."))
-        self.pushButton_15.setText(_translate("Form", "="))
-        self.pushButton_16.setText(_translate("Form", "+"))
+
+    def add_functions(self):
+        for text, button in self.buttons.items():
+            if text not in {'=', 'C'}:
+                button.clicked.connect(lambda _, t=text: self.on_button_click(t))
+        self.buttons['='].clicked.connect(self.calculate_result)
+
+    def on_button_click(self, char):
+        current_text = self.lineEdit.text()
+        if current_text == '0':
+            self.lineEdit.setText(char)
+        else:
+            self.lineEdit.setText(current_text + char)
+
+    def calculate_result(self):
+        try:
+            result = eval(self.lineEdit.text())
+            self.lineEdit.setText(str(result))
+        except Exception as e:
+            self.lineEdit.setText("Error")
 
 
 if __name__ == "__main__":
